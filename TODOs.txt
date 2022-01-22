@@ -1,0 +1,18 @@
+# Frontend
+- Register Modal
+- Login Modal
+- Dropdown User
+- Dropdown Admin
+- Home Page
+- Music Player
+- Tabel Payment
+- Form Music
+- Form Artis
+- Form Payment
+
+
+# Backend
+- [DONE] CRUD User
+- [DONE] CRUD Artis
+- [DONE] CRUD Music
+- [DONE] CRUD Payment
