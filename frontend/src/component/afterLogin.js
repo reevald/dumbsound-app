@@ -74,6 +74,16 @@ function CompAfterLogin() {
                     </div>
                   </div>
                 </Link>
+                <Link to='/transactions'>
+                  <div className='flex flex-row items-center mb-6 px-4'>
+                    <div className='w-6 mr-3'>
+                      <img src={iconPay} alt="Icon Transactions" />
+                    </div>
+                    <div className='text-white hover:text-orange-ds-200 font-semibold'>
+                      Transactions
+                    </div>
+                  </div>
+                </Link>
               </>
               :
               <Link to='/subscribe'>

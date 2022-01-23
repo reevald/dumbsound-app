@@ -10,24 +10,29 @@ import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/authContext';
 
-function WrapperNavbar({ children }) {
+function WrapperNavbar(props) {
   // Ref: https://stackoverflow.com/a/59511511
   const [navBackgroundColor, setNavBackgroundColor] = useState("bg-transparent");
-
+  const isFixedColorNav = props.isFixedColorNav;
   useEffect(() => {
-    const onScroll = () => {
-      const backgroundColor = window.scrollY >= 50 ? "bg-gray-ds-300" : "bg-transparent";
-      setNavBackgroundColor(backgroundColor);
+    console.log("running nav");
+    if (!isFixedColorNav) {
+      const onScroll = () => {
+        const backgroundColor = window.scrollY >= 50 ? "bg-gray-ds-300" : "bg-transparent";
+        setNavBackgroundColor(backgroundColor);
+      }
+  
+      document.addEventListener("scroll", onScroll);
+  
+      // Fix memory leak: https://stackoverflow.com/a/56606967
+      // Cleaning the event handler from web API
+      return () => {
+        document.removeEventListener("scroll", onScroll);
+      }
+    } else {
+      setNavBackgroundColor("bg-gray-ds-300");
     }
-
-    document.addEventListener("scroll", onScroll);
-
-    // Fix memory leak: https://stackoverflow.com/a/56606967
-    // Cleaning the event handler from web API
-    return () => {
-      document.removeEventListener("scroll", onScroll);
-    }
-  }, [navBackgroundColor, setNavBackgroundColor]);
+  }, [isFixedColorNav, navBackgroundColor, setNavBackgroundColor]);
 
   return (
     <div className={`${navBackgroundColor} fixed z-20 inset-x-0 top-0 h-16 flex flex-row justify-center`}>
@@ -38,19 +43,20 @@ function WrapperNavbar({ children }) {
           </Link>
         </div>
         <div className='flex flex-row items-center'>
-          {children}
+          {props.children}
         </div>
       </div>
     </div>
   );
 }
 
-function CompNavbar() {
+function CompNavbar(props) {
   const [state,] = useContext(UserContext);
   const isLogin = state.isLogin;
+  const isFixedColorNav = props.isFixedColorNav;
   
   return (
-    <WrapperNavbar>
+    <WrapperNavbar isFixedColorNav={isFixedColorNav}>
       { isLogin ?
         <CompAfterLogin />
         :

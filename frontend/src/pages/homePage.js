@@ -10,7 +10,7 @@ import { ModalContextProvider } from '../context/modalContext';
 function HomePage() {
   return (
     <ModalContextProvider>
-      <CompNavbar />
+      <CompNavbar isFixedColorNav={false} />
       <CompWrapper>
         <CompHero />
         <CompListPlayMusic />

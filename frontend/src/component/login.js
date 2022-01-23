@@ -111,7 +111,7 @@ function CompLogin() {
             onSubmit={(e) => onSubmitHandler.mutate(e)} 
             className="flex flex-col mb-3">
             <input
-              className="mb-3 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-3 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="email"
               type="email"
               placeholder="Email"
@@ -120,7 +120,7 @@ function CompLogin() {
               required
             />
             <input
-              className="mb-6 border-2 border-gray-400 text-white rounded-md p-1 bg-gray-500"
+              className="mb-6 border-2 border-gray-ds-10 rounded-md p-1 bg-gray-ds-20 text-white"
               name="password"
               type="password"
               placeholder="Password"

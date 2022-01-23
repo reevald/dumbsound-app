@@ -111,7 +111,7 @@ function CompRegister() {
             onSubmit={(e) => onSubmitHandler.mutate(e)}
             className="flex flex-col mb-3">
             <input
-              className="mb-3 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-3 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="email"
               type="email"
               placeholder="Email"
@@ -120,7 +120,7 @@ function CompRegister() {
               required
             />
             <input
-              className="mb-3 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-3 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="password"
               type="password"
               placeholder="Password"
@@ -130,7 +130,7 @@ function CompRegister() {
               required
             />
             <input
-              className="mb-3 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-3 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="fullName"
               type="text"
               placeholder="Full Name"
@@ -139,10 +139,10 @@ function CompRegister() {
               onChange={onChangeHandler}
               required
             />
-            <div className="w-full mb-3 border-2 border-gray-400 rounded-md overflow-hidden">
+            <div className="w-full mb-3 border-2 border-gray-ds-10 rounded-md overflow-hidden">
               <select
                 name="gender"
-                className="invalid:text-gray-400 bg-no-repeat w-full border-r-8 border-transparent bg-right  appearance-none text-white p-1 bg-gray-500"
+                className="invalid:text-gray-ds-10 bg-no-repeat w-full border-r-8 border-transparent bg-right  appearance-none text-white p-1 bg-gray-ds-20"
                 style={{
                   backgroundImage: `url(${iconDropdown})`
                 }}
@@ -156,7 +156,7 @@ function CompRegister() {
               </select>
             </div>
             <input
-              className="mb-3 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-3 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="phone"
               type="text"
               placeholder="Phone: +62XXXXXXXXX"
@@ -166,7 +166,7 @@ function CompRegister() {
               required
             />
             <textarea
-              className="mb-6 h-9 border-2 text-white border-gray-400 rounded-md p-1 bg-gray-500"
+              className="mb-6 h-9 border-2 text-white border-gray-ds-10 rounded-md p-1 bg-gray-ds-20"
               name="address"
               placeholder="Address"
               value={dataForm.address}
