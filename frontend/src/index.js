@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css'; // tailwindcss
 import App from './App';
+import { UserContextProvider } from './context/authContext';
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+
+// Init QueryClient and QueryClientProvider
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// Init client from queryClient
+const client = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserContextProvider>
+      <QueryClientProvider client={client}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </UserContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

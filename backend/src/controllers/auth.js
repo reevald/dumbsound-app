@@ -54,12 +54,13 @@ exports.checkAuth = async (req, res) => {
     }
 
     res.status(200).send({
-      msg: "success",
+      status: "success",
       data: {
         user: {
           id: dataUser.id,
           fullName: dataUser.fullName,
           email: dataUser.email,
+          listAs: dataUser.listAs,
           statusSub,
           remainDay,
           token
@@ -129,11 +130,47 @@ exports.login = async (req, res) => {
       listAs: dataUser.listAs
     }, process.env.TOKEN_KEY);
 
+    // ====== Check Subscribe Status ======
+    // FindOne = 1 month sub until end then can sub again
+    const dataApprovePayment = await payment.findOne({
+      where: {
+        userId: dataUser.id,
+        status: "Approve"
+      },
+      attributes: ["dueDate"],
+      order: [['createdAt', 'DESC']] // latest approve
+    });
+
+    let statusSub = "Not Active";
+    let remainDay = "";
+    if (dataApprovePayment) {
+      const dueDate = dataApprovePayment.dueDate.split("/");
+      // Swap month and day
+      const millisecondDueDate = Date.parse(`${dueDate[1]}/${dueDate[0]}/${dueDate[2]}`);
+      const millisecondNowDate = Date.now();
+      if (millisecondNowDate <= millisecondDueDate) {
+        const millisecondPerDay = 86400 * 1000;
+        const diffDays = Math.ceil(
+          (millisecondDueDate - millisecondNowDate) / millisecondPerDay
+        )
+        remainDay = `${diffDays}`;
+        statusSub = "Active";
+      }
+    }
+
     res.status(200).send({
-      msg: "success",
-      email: dataUser.email,
-      status: dataUser.listAs,
-      token
+      status: "success",
+      data: {
+        user: {
+          id: dataUser.id,
+          fullName: dataUser.fullName,
+          email: dataUser.email,
+          listAs: dataUser.listAs,
+          statusSub,
+          remainDay,
+          token
+        }
+      }
     });
   } catch (error) {
     console.log(error);
@@ -197,9 +234,47 @@ exports.register = async (req, res) => {
       listAs: newUser.listAs
     }, process.env.TOKEN_KEY);
 
+    // ====== Check Subscribe Status ======
+    // FindOne = 1 month sub until end then can sub again
+    const dataApprovePayment = await payment.findOne({
+      where: {
+        userId: newUser.id,
+        status: "Approve"
+      },
+      attributes: ["dueDate"],
+      order: [['createdAt', 'DESC']] // latest approve
+    });
+
+    let statusSub = "Not Active";
+    let remainDay = "";
+    if (dataApprovePayment) {
+      const dueDate = dataApprovePayment.dueDate.split("/");
+      // Swap month and day
+      const millisecondDueDate = Date.parse(`${dueDate[1]}/${dueDate[0]}/${dueDate[2]}`);
+      const millisecondNowDate = Date.now();
+      if (millisecondNowDate <= millisecondDueDate) {
+        const millisecondPerDay = 86400 * 1000;
+        const diffDays = Math.ceil(
+          (millisecondDueDate - millisecondNowDate) / millisecondPerDay
+        )
+        remainDay = `${diffDays}`;
+        statusSub = "Active";
+      }
+    }
+
     res.status(200).send({
-      msg: "success",
-      token
+      status: "success",
+      data: {
+        user: {
+          id: newUser.id,
+          fullName: newUser.fullName,
+          email: newUser.email,
+          listAs: newUser.listAs,
+          statusSub,
+          remainDay,
+          token
+        }
+      }
     });
   } catch (error) {
     console.log(error);
