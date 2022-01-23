@@ -23,7 +23,7 @@ exports.getAllArtisName = async (req, res) => {
 exports.addArtis = async (req, res) => {
   // Our validation
   const schema = Joi.object({
-    name: Joi.string().trim().min(3).required(),
+    name: Joi.string().trim().min(2).required(),
     old: Joi.number().min(1).required(),
     type: Joi.string().required(),
     startCareer: Joi.string().trim().min(3).required()

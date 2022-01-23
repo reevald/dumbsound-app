@@ -1,8 +1,18 @@
+import CompNavbar from "../component/navbar";
+import CompFooter from "../component/footer";
+import CompWrapper from "../component/wrapper";
 
+import CompFormAddMusic from "../compAddMusicPage/formAddMusic";
 
 function AddMusicPage() {
   return (
-    <div>Ini Add Artis Music</div>
+    <>
+      <CompNavbar isFixedColorNav={true}/>
+      <CompWrapper>
+        <CompFormAddMusic />
+      </CompWrapper>
+      <CompFooter />
+    </>
   );
 }
 

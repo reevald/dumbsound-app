@@ -79,7 +79,7 @@ function CompFormAddArtis() {
     <div className='flex flex-row justify-center py-16 w-full'>
       <div className='flex flex-col h-full w-full xl:max-w-7xl lg:max-w-5xl px-4 sm:px-8 md:px-36'>
         <div className="text-2xl font-bold mb-10 mt-8 text-white">
-          Add artis
+          Add Artis
         </div>
         {message && message}
         <form
@@ -124,6 +124,7 @@ function CompFormAddArtis() {
             className="mb-6 border-2 border-gray-ds-10 rounded-md p-1 bg-gray-ds-20 text-white"
             name="startCareer"
             type="text"
+            pattern="[\d]{4}"
             placeholder="Start a Career"
             value={dataForm.startCareer}
             onChange={onChangeHandler}

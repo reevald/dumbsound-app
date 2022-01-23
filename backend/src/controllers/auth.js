@@ -51,6 +51,16 @@ exports.checkAuth = async (req, res) => {
         remainDay = `${diffDays}`;
         statusSub = "Active";
       }
+    } else { // If not active but has pending status
+      const dataPendingPayment = await payment.findOne({
+        where: {
+          userId: dataUser.id,
+          status: "Pending"
+        }
+      });
+      if (dataPendingPayment) {
+        statusSub = "Pending";
+      }
     }
 
     res.status(200).send({
@@ -156,6 +166,16 @@ exports.login = async (req, res) => {
         remainDay = `${diffDays}`;
         statusSub = "Active";
       }
+    } else { // If not active but has pending status
+      const dataPendingPayment = await payment.findOne({
+        where: {
+          userId: dataUser.id,
+          status: "Pending"
+        }
+      });
+      if (dataPendingPayment) {
+        statusSub = "Pending";
+      }
     }
 
     res.status(200).send({
@@ -259,6 +279,16 @@ exports.register = async (req, res) => {
         )
         remainDay = `${diffDays}`;
         statusSub = "Active";
+      }
+    } else { // If not active but has pending status
+      const dataPendingPayment = await payment.findOne({
+        where: {
+          userId: newUser.id,
+          status: "Pending"
+        }
+      });
+      if (dataPendingPayment) {
+        statusSub = "Pending";
       }
     }
 
