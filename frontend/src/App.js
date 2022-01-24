@@ -29,7 +29,7 @@ function PrivateRoute({ children, ...rest }) {
       <Route
         {...rest}
         // error when use history.push() (error render?) (condition: not login, if login is ok)
-        render={() => isLogin ? children : <Redirect to='/' />}
+        render={() => isLogin ? <Switch>{children}</Switch> : <Redirect to='/' />}
       />
     );
   }
@@ -91,7 +91,7 @@ function App() {
   // Avoid warning : "React Hook useEffect has a missing dependency blabla",
   // Ref: https://stackoverflow.com/a/60327893 (useCallback)
   useEffect(() => {
-    console.log("running"); // for checking infinite loop
+    console.log("running wkwk"); // for checking infinite loop
     checkUserLogin();
   }, [checkUserLogin]);
 
