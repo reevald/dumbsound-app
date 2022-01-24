@@ -2,10 +2,12 @@ import { API } from "../config/api";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/authContext";
 import { useMutation } from "react-query";
+import { useHistory } from "react-router-dom";
 import iconAttach from "../src-assets/image/icon-attach.svg";
 
 function CompSubscribePayment(props) {
   const api = API();
+  const history = useHistory();
   const [stateUser,] = useContext(UserContext);
 
   // Ref: https://stackoverflow.com/a/4929629
@@ -96,7 +98,7 @@ function CompSubscribePayment(props) {
         ));
       }
       if (response.status === "success") {
-        return window.location.reload();
+        return history.go(0);
       }
 
     } catch (error) {
