@@ -1,14 +1,14 @@
 # Frontend
-- Register Modal
-- Login Modal
-- Dropdown User
-- Dropdown Admin
-- Home Page
+- [Done] Register Modal
+- [Done] Login Modal
+- [Done] Dropdown User
+- [Done] Dropdown Admin
+- [Done] Home Page
+- [Done] Tabel Payment
+- [Done] Form Music
+- [Done] Form Artis
+- [Done] Form Payment
 - Music Player
-- Tabel Payment
-- Form Music
-- Form Artis
-- Form Payment
 
 
 # Backend

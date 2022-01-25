@@ -9,8 +9,15 @@ function CompHero() {
           <div className='text-white text-4xl max-w-lg xl:text-6xl xl:max-w-2xl mb-5'>
             Connect on DumbSound
           </div>
-          <div className='text-white max-w-lg xl:text-xl xl:max-w-2xl'>
+          <div className='text-white max-w-lg xl:text-xl xl:max-w-2xl mb-5'>
             Discovery, stream, and share a constantly expanding mix of music from emerging and major artists around the world
+          </div>
+          <div className='max-w-lg xl:text-xl xl:max-w-2xl'>
+            <a href="#section-playlist">
+              <div className='bg-orange-ds-200 text-white font-semibold hover:bg-orange-ds-100 py-2 px-6 rounded-md'>
+                Play Now
+              </div>
+            </a>
           </div>
         </div>
       </div>
